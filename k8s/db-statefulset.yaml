@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db
+spec:
+  selector:
+    matchLabels:
+      app: db
+  serviceName: "db"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: nginx
+        image: mysql:5.6
+        ports:
+        - containerPort: 3306
+          name: db
+        volumeMounts:
+        - name: db
+          mountPath: /usr/data
+  volumeClaimTemplates:
+  - metadata:
+      name: db
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
