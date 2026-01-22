@@ -2,3 +2,10 @@ docker build -t israelerlan1/wepone:v1 .
 
 docker push israelerlan1/wepone:v1 
 
+oc apply -f k8s/
+
+oc expose svc db 
+
+oc get route 
+
+oc get pods -w 
