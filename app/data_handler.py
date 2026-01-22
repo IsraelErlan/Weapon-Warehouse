@@ -22,4 +22,3 @@ def df_to_json(df):
     print(type(data))
     return data
 
-

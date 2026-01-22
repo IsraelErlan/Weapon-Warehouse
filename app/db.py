@@ -43,3 +43,9 @@ def init_db():
         cursor.close()
         conn.close()
     
+
+
+
+
+def insert_data(data):
+    pass
